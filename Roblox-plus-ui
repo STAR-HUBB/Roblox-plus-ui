@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Plus UI (Prototype)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }body {
+  background: #0d111c;
+  color: white;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background: #101522;
+  padding: 20px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.robux-balance {
+  background: #1b2335;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #9fb3ff;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search {
+  width: 60%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: #171d2b;
+  color: white;
+}
+
+.send-btn {
+  background: #1b2335;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hero h1 {
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: #171d2b;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.price {
+  background: #2a344c;
+  padding: 10px 18px;
+  border-radius: 10px;
+}
+
+.send-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #101522;
+  padding: 25px;
+  border-radius: 16px;
+  display: none;
+  width: 300px;
+}
+
+.send-modal input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.send-modal button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2a344c;
+  color: white;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1b2335;
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: none;
+}
+
+  </style>
+</head>
+<body><div class="sidebar">
+  <div class="profile">
+    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot.png" />
+    <h3>haz3mn</h3>
+  </div>  <div class="robux-balance">
+    💰 Balance: 1,250,000 Robux (Demo)
+  </div>  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#">Profile</a>
+    <a href="#">Messages</a>
+    <a href="#">Friends</a>
+    <a href="#">Inventory</a>
+  </div>
+</div><div class="main">  <div class="topbar">
+    <input class="search" placeholder="Search users or items..." />
+    <button class="send-btn" onclick="openSend()">Send Robux</button>
+  </div>  <div class="hero">
+    <h1>Roblox Plus Dashboard</h1>
+  </div>  <div class="cards">
+    <div class="card">
+      <div>30,000,000 Robux Package</div>
+      <div class="price">$239.99</div>
+    </div>
+    <div class="card">
+      <div>12,100 Robux Package</div>
+      <div class="price">$119.99</div>
+    </div>
+  </div></div><div class="overlay" id="overlay" onclick="closeSend()"></div><div class="send-modal" id="modal">
+  <h3>Send Robux (Demo)</h3>
+  <input id="user" placeholder="Username" />
+  <input id="amount" placeholder="Amount" />
+  <button onclick="send()">Send</button>
+</div><div class="toast" id="toast">Sent successfully (demo animation)</div><script>
+  function openSend() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  function closeSend() {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  function send() {
+    closeSend();
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2000);
+  }
+</script></body>
+</html><!-- NOTE: This is a UI PROTOTYPE only. No real Robux or Roblox services are connected. -->
